@@ -17,19 +17,21 @@ The approach that this algorithm uses to significantly cut down on the number of
 1. Each total row/column/diagonal sum of a NxN magic square is N(N^2-1)/2
 2. One base magic square has 8 variants if we apply the appropriate transformation.
 
-Original              Flip Y-axis            Transpose             Flip Y-Axis
+Original              Flip Y-axis       |     Transpose             Flip Y-Axis
                       or 90° ⟳                                     or 90° ⟳ 
-| 8 | 1 | 6 |         | 6 | 1 | 8 |          | 8 | 3 | 4 |         | 4 | 3 | 8 |
-|---|---|---|         |---|---|---|          |---|---|---|         |---|---|---|
-| 3 | 5 | 7 |         | 7 | 5 | 3 |          | 1 | 5 | 9 |         | 9 | 5 | 1 |
-| 4 | 9 | 2 |         | 2 | 9 | 4 |          | 6 | 7 | 2 |         | 2 | 7 | 6 |
+                      
+| 8 | 1 | 6 |         | 6 | 1 | 8 |     |     | 8 | 3 | 4 |         | 4 | 3 | 8 |
+|---|---|---|         |---|---|---|     |     |---|---|---|         |---|---|---|
+| 3 | 5 | 7 |         | 7 | 5 | 3 |     |     | 1 | 5 | 9 |         | 9 | 5 | 1 |
+| 4 | 9 | 2 |         | 2 | 9 | 4 |     |     | 6 | 7 | 2 |         | 2 | 7 | 6 |
 
-Flip X-axis           Flip XY-axis           Flip X-axis           Flip XY-Axis
+Flip X-axis           Flip XY-axis      |     Flip X-axis           Flip XY-Axis
 or 90° ⟲             or 180° ⟳               or 90° ⟲             or 180° ⟳
-| 4 | 9 | 2 |         | 2 | 9 | 4 |          | 6 | 7 | 2 |         | 2 | 7 | 6 |
-|---|---|---|         |---|---|---|          |---|---|---|         |---|---|---|
-| 3 | 5 | 7 |         | 7 | 5 | 3 |          | 1 | 5 | 9 |         | 9 | 5 | 1 |
-| 8 | 1 | 6 |         | 6 | 1 | 8 |          | 8 | 3 | 4 |         | 4 | 3 | 8 |
+
+| 4 | 9 | 2 |         | 2 | 9 | 4 |     |     | 6 | 7 | 2 |         | 2 | 7 | 6 |
+|---|---|---|         |---|---|---|     |     |---|---|---|         |---|---|---|
+| 3 | 5 | 7 |         | 7 | 5 | 3 |     |     | 1 | 5 | 9 |         | 9 | 5 | 1 |
+| 8 | 1 | 6 |         | 6 | 1 | 8 |     |     | 8 | 3 | 4 |         | 4 | 3 | 8 |
 
 Ideally, it might be possible to only search through a subset of permutations that will only find 1/8 of all the possible NxN magic squares and then apply the above transformations to obtain all 8. However, the algorithm in this code only manages to find 1/2 of all the possible magic squares before it applys a reflection on the Y-axis to obtain the rest of the valid magic squares.
 
@@ -53,26 +55,28 @@ Consequently, the summands {1,5,9}, {1,6,8}, {2,4,9}, {2,5,8} {2,6,7}, {3,4,8}, 
 
 4. Construct the first row of multiple magic square candidates by making the above permutations the numbers in the first row. However, it should be noted that when constructing the first row, only the first half of the permutations of the isolated summands are kept (keep {1,5,9}, {1,9,5}, {5,1,9}) while the second half is discarded (discard {5,9,1}, {9,1,5}, {9,5,1}). By doing this only on the construction of the first row of a magic square, when we do eventually find one magic square, we can also find the other by reflecting the square on the Y-axis:
 
-Kept Summands          Discarded summands
-(first row)            (Y-axis reflection)
-| 1 | 5 | 9 |          | 9 | 5 | 1 |
-|---|---|---|          |---|---|---|
-| x | x | x |          | x | x | x |
-| x | x | x |          | x | x | x |
+Kept Summands     |     Discarded summands
+(first row)       |     (Y-axis reflection)
 
-| 1 | 9 | 5 |          | 5 | 9 | 1 |
-|---|---|---|          |---|---|---|
-| x | x | x |          | x | x | x |
-| x | x | x |          | x | x | x |
+| 1 | 5 | 9 |     |     | 9 | 5 | 1 |
+|---|---|---|     |     |---|---|---|
+| x | x | x |     |     | x | x | x |
+| x | x | x |     |     | x | x | x |
 
-| 5 | 1 | 9 |          | 5 | 1 | 9 |
-|---|---|---|          |---|---|---|
-| x | x | x |          | x | x | x |
-| x | x | x |          | x | x | x |
+| 1 | 9 | 5 |     |     | 5 | 9 | 1 |
+|---|---|---|     |     |---|---|---|
+| x | x | x |     |     | x | x | x |
+| x | x | x |     |     | x | x | x |
+
+| 5 | 1 | 9 |     |     | 5 | 1 | 9 |
+|---|---|---|     |     |---|---|---|
+| x | x | x |     |     | x | x | x |
+| x | x | x |     |     | x | x | x |
 
 5. For each of the currently constructed magic squares with the first row filled in, repeat steps 2-4 on the remaining summands that survived the filter (in this case, {3,4,8}, {4,5,6}). For instance:
 
 This magic square
+
 | 1 | 5 | 9 |
 |---|---|---|
 | x | x | x |
@@ -84,13 +88,15 @@ will have its second row recursively filled with either {3,4,8}, {3,8,4}, {4,3,8
 
 Invalid Magic
 Square (Discarded)
+
 | 1 | 5 | 9 |
 |---|---|---|
 | 3 | 4 | 8 |
 | 4 | 5 | 6 |
 
 Found Valid             Y-flipped 2nd      
-Magic Square            Valid Square  
+Magic Square            Valid Square
+
 | 8 | 1 | 6 |     |     | 6 | 1 | 8 |
 |---|---|---|     |     |---|---|---|
 | 3 | 5 | 7 |     |     | 7 | 5 | 3 |
