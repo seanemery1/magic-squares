@@ -100,24 +100,17 @@ will have its second row recursively filled with either {3,4,8}, {3,8,4}, {4,3,8
 
 6. When a magic square is fully filled in (or there are no more filtered summands that can complete the square), all column and diagonal sums will be validated to see if they each add up to N(N^2-1)/2 (row sums have already been validated to add up N(N^2-1)/2). For example:
 
-Invalid Magic
-Square (Discarded)
+#Invalid Magic
+#Square (Discarded)
 
 | 1 | 5 | 9 |
 |---|---|---|
 | 3 | 4 | 8 |
 | 4 | 5 | 6 |
 
-Found Valid             Y-flipped 2nd      
-Magic Square            Valid Square
-
-| 8 | 1 | 6 |     |     | 6 | 1 | 8 |
-|---|---|---|     |     |---|---|---|
-| 3 | 5 | 7 |     |     | 7 | 5 | 3 |
-| 4 | 9 | 2 |     |     | 2 | 9 | 4 |
 
 
-|Found Valid Magic Square|Y-flipped 2nd Valid Square|
+|Found Valid \n Magic Square|Y-flipped 2nd \n Valid Square|
 |---|---|
 |<table> <tr><td>8</td><td>1</td><td>6</td></tr><tr><td>3</td><td>5/td><td>7</td></tr><tr><td>4</td><td>9</td><td>2</td></tr> </table>| <table> <tr><td>6</td><td>1</td><td>8</td></tr><tr><td>7</td><td>5</td><td>3</td></tr><tr><td>2</td><td>9</td><td>4</td></tr> </table>|
 
