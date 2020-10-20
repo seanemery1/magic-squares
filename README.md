@@ -1,4 +1,4 @@
-## magic-squares
+## Magic Squares
 A magic square is a square array of numbers consisting of the distinct positive integers 1, 2, ..., n^2 arranged such that the sum of the n numbers in any horizontal, vertical, or main diagonal line is always the same number. For instance, for a 3x3 Magic Square, every row, column, and diagonal sums to 15:
 
 3x3 Magic Square Example
@@ -17,9 +17,13 @@ The approach that this algorithm uses to significantly cut down on the number of
 1. Each total row/column/diagonal sum of a NxN magic square is N(N^2-1)/2
 2. One base magic square has 8 variants if we apply the appropriate transformation.
 
-|Original|Flip Y-axis |Transpose|Flip Y-Axis|
+|Original|(Original) Flip Y-Axis|(Original) Flip X-Axis|(Original) Flip XY-Axis|
 |---|---|---|---|
-|<table> <tr><td>8</td><td>1</td><td>6</td></tr><tr><td>3</td><td>5</td><td>7</td></tr><tr><td>4</td><td>9</td><td>2</td></tr> </table>| <table> <tr><td>8</td><td>1</td><td>6</td></tr><tr><td>3</td><td>5</td><td>7</td></tr><tr><td>4</td><td>9</td><td>2</td></tr> </table>| <table> <tr><td>8</td><td>1</td><td>6</td></tr><tr><td>3</td><td>5</td><td>7</td></tr><tr><td>4</td><td>9</td><td>2</td></tr> </table>| <table> <tr><td>8</td><td>1</td><td>6</td></tr><tr><td>3</td><td>5</td><td>7</td></tr><tr><td>4</td><td>9</td><td>2</td></tr> </table>|
+|<table> <tr><td>8</td><td>1</td><td>6</td></tr><tr><td>3</td><td>5</td><td>7</td></tr><tr><td>4</td><td>9</td><td>2</td></tr> </table>| <table> <tr><td>6</td><td>1</td><td>6</td></tr><tr><td>7</td><td>5</td><td>3</td></tr><tr><td>2</td><td>9</td><td>4</td></tr> </table>| <table> <tr><td>4</td><td>9</td><td>2</td></tr><tr><td>3</td><td>5</td><td>7</td></tr><tr><td>8</td><td>1</td><td>6</td></tr> </table>| <table> <tr><td>2</td><td>9</td><td>4</td></tr><tr><td>7</td><td>5</td><td>3</td></tr><tr><td>6</td><td>1</td><td>8</td></tr> </table>|
+
+|Transpose|(Transpose) Flip Y-Axis|(Transpose) Flip X-Axis|(Transpose) Flip XY-Axis|
+|---|---|---|---|
+|<table> <tr><td>8</td><td>3</td><td>4</td></tr><tr><td>1</td><td>5</td><td>9</td></tr><tr><td>6</td><td>7</td><td>2</td></tr> </table>| <table> <tr><td>4</td><td>3</td><td>8</td></tr><tr><td>9</td><td>5</td><td>1</td></tr><tr><td>2</td><td>7</td><td>6</td></tr> </table>| <table> <tr><td>6</td><td>7</td><td>2</td></tr><tr><td>1</td><td>5</td><td>9</td></tr><tr><td>8</td><td>3</td><td>4</td></tr> </table>| <table> <tr><td>2</td><td>7</td><td>6</td></tr><tr><td>9</td><td>5</td><td>1</td></tr><tr><td>4</td><td>3</td><td>8</td></tr> </table>|
 
 Original              Flip Y-axis       |     Transpose             Flip Y-Axis
                       or 90° ⟳                                     or 90° ⟳ 
@@ -72,10 +76,16 @@ Kept Summands     |     Discarded summands
 | x | x | x |     |     | x | x | x |
 | x | x | x |     |     | x | x | x |
 
-| 5 | 1 | 9 |     |     | 5 | 1 | 9 |
+| 5 | 1 | 9 |     |     | 9 | 1 | 5 |
 |---|---|---|     |     |---|---|---|
 | x | x | x |     |     | x | x | x |
 | x | x | x |     |     | x | x | x |
+
+|Kept Summands (First Row)|Discarded Summands (Y-axis Reflection)|
+|---|---|
+|<table> <tr><td>1</td><td>5</td><td>9</td></tr><tr><td>x</td><td>x</td><td>x</td></tr><tr><td>x</td><td>x</td><td>x</td></tr> </table>| <table> <tr><td>9</td><td>5</td><td>1</td></tr><tr><td>x</td><td>x</td><td>x</td></tr><tr><td>x</td><td>x</td><td>x</td></tr> </table>|
+|<table> <tr><td>1</td><td>9</td><td>4</td></tr><tr><td>x</td><td>x</td><td>x</td></tr><tr><td>x</td><td>x</td><td>x</td></tr> </table>| <table> <tr><td>5</td><td>9</td><td>1</td></tr><tr><td>x</td><td>x</td><td>x</td></tr><tr><td>x</td><td>x</td><td>x</td></tr> </table>|
+|<table> <tr><td>5</td><td>1</td><td>9</td></tr><tr><td>x</td><td>x</td><td>x</td></tr><tr><td>x</td><td>x</td><td>x</td></tr> </table>| <table> <tr><td>9</td><td>1</td><td>5</td></tr><tr><td>x</td><td>x</td><td>x</td></tr><tr><td>x</td><td>x</td><td>x</td></tr> </table>|
 
 5. For each of the currently constructed magic squares with the first row filled in, repeat steps 2-4 on the remaining summands that survived the filter (in this case, {3,4,8}, {4,5,6}). For instance:
 
@@ -105,6 +115,11 @@ Magic Square            Valid Square
 |---|---|---|     |     |---|---|---|
 | 3 | 5 | 7 |     |     | 7 | 5 | 3 |
 | 4 | 9 | 2 |     |     | 2 | 9 | 4 |
+
+
+|Found Valid Magic Square|Y-flipped 2nd Valid Square|
+|---|---|
+|<table> <tr><td>8</td><td>1</td><td>6</td></tr><tr><td>3</td><td>5/td><td>7</td></tr><tr><td>4</td><td>9</td><td>2</td></tr> </table>| <table> <tr><td>6</td><td>1</td><td>8</td></tr><tr><td>7</td><td>5</td><td>3</td></tr><tr><td>2</td><td>9</td><td>4</td></tr> </table>|
 
 When a valid magic square is found, both the original and its flipped variant are logged and the count for the total number of square is incremented by 2.
 
