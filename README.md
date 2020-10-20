@@ -49,7 +49,7 @@ Consequently, the summands {1,5,9}, {1,6,8}, {2,4,9}, {2,5,8} {2,6,7}, {3,4,8}, 
 4. Construct the first row of multiple magic square candidates by making the above permutations the numbers in the first row. However, it should be noted that when constructing the first row, only the first half of the permutations of the isolated summands are kept (keep {1,5,9}, {1,9,5}, {5,1,9}) while the second half is discarded (discard {5,9,1}, {9,1,5}, {9,5,1}). By doing this only on the construction of the first row of a magic square, when we do eventually find one magic square, we can also find the other by reflecting the square on the Y-axis:
 
 
-|Kept Squares|Discarded Squares|
+|Kept|Discarded|
 |---|---|
 |<table> <tr><td>1</td><td>5</td><td>9</td></tr><tr><td>x</td><td>x</td><td>x</td></tr><tr><td>x</td><td>x</td><td>x</td></tr> </table>| <table> <tr><td>9</td><td>5</td><td>1</td></tr><tr><td>x</td><td>x</td><td>x</td></tr><tr><td>x</td><td>x</td><td>x</td></tr> </table>|
 |<table> <tr><td>1</td><td>9</td><td>4</td></tr><tr><td>x</td><td>x</td><td>x</td></tr><tr><td>x</td><td>x</td><td>x</td></tr> </table>| <table> <tr><td>5</td><td>9</td><td>1</td></tr><tr><td>x</td><td>x</td><td>x</td></tr><tr><td>x</td><td>x</td><td>x</td></tr> </table>|
