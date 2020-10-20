@@ -19,7 +19,7 @@ The approach that this algorithm uses to significantly cut down on the number of
 
 |Original|Flip Y-axis |Transpose|Flip Y-Axis|
 |---|---|---|---|
-|<table> <tr><td>8</td><td>1</td><td>6</td</tr><tr><td>3</td><td>5</td><td>7</td></tr><tr><td>4</td><td>9</td><td>2</td></tr> </table>| <table> <tr><td>8</td><td>1</td><td>6</td</tr><tr><td>3</td><td>5</td><td>7</td></tr><tr><td>4</td><td>9</td><td>2</td></tr> </table>| <table> <tr><td>8</td><td>1</td><td>6</td</tr><tr><td>3</td><td>5</td><td>7</td></tr><tr><td>4</td><td>9</td><td>2</td></tr> </table>| <table> <tr><td>8</td><td>1</td><td>6</td</tr><tr><td>3</td><td>5</td><td>7</td></tr><tr><td>4</td><td>9</td><td>2</td></tr> </table>|
+|<table> <tr><td>8</td><td>1</td><td>6</td></tr><tr><td>3</td><td>5</td><td>7</td></tr><tr><td>4</td><td>9</td><td>2</td></tr> </table>| <table> <tr><td>8</td><td>1</td><td>6</td></tr><tr><td>3</td><td>5</td><td>7</td></tr><tr><td>4</td><td>9</td><td>2</td></tr> </table>| <table> <tr><td>8</td><td>1</td><td>6</td></tr><tr><td>3</td><td>5</td><td>7</td></tr><tr><td>4</td><td>9</td><td>2</td></tr> </table>| <table> <tr><td>8</td><td>1</td><td>6</td></tr><tr><td>3</td><td>5</td><td>7</td></tr><tr><td>4</td><td>9</td><td>2</td></tr> </table>|
 
 Original              Flip Y-axis       |     Transpose             Flip Y-Axis
                       or 90° ⟳                                     or 90° ⟳ 
