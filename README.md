@@ -6,7 +6,9 @@ A magic square is a square array of numbers consisting of the distinct positive 
 ![alt tag](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Magicsquareexample.svg/180px-Magicsquareexample.svg.png)
  
 Row summations: 2 + 7 + 6 = 15, 9 + 5 + 1 = 15, 4 + 3 + 8 = 15.
+<br/>
 Column summations: 2 + 9 + 4 = 15, 7 + 5 + 3 = 15, 6 + 1 + 8 = 15.
+<br/>
 Diagonal summations: 2 + 5 + 7 = 15, 6 + 5 + 4 = 16.
 
 ## Algorithm
@@ -31,8 +33,9 @@ Ideally, it might be possible to only search through a subset of permutations th
 The way this algorithm is implemented is as follows:
 1. Using an index tree, we search through all combinations of N summands that add up N(N^2-1)/2 and store them in an ArrayList. For example, in a 3x3 magic square, the summands are as follow:
 
-15=1+5+9              15=1+6+8              15=2+4+9              15=2+5+8
-15=2+6+7              15=3+4+8              15=3+5+7              15=4+5+6
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15=1+5+9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15=1+6+8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15=2+4+9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15=2+5+8
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15=2+6+7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15=3+4+8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15=3+5+7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15=4+5+6
 
 Consequently, the summands {1,5,9}, {1,6,8}, {2,4,9}, {2,5,8} {2,6,7}, {3,4,8}, {3,5,7} {4,5,6} are then stored in an ArrayList.
 
