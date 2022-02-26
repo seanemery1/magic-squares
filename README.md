@@ -6,7 +6,9 @@ A magic square is a square array of numbers consisting of the distinct positive 
 ![alt tag](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Magicsquareexample.svg/180px-Magicsquareexample.svg.png)
  
 Row summations: 2 + 7 + 6 = 15, 9 + 5 + 1 = 15, 4 + 3 + 8 = 15.
+
 Column summations: 2 + 9 + 4 = 15, 7 + 5 + 3 = 15, 6 + 1 + 8 = 15.
+
 Diagonal summations: 2 + 5 + 7 = 15, 6 + 5 + 4 = 16.
 
 ## Algorithm
